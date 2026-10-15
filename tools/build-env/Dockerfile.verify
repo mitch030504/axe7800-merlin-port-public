@@ -1,0 +1,8 @@
+# Offline verification image: the build image plus qemu-arm user-mode emulation, used to run the
+# firmware's own ARM dynamic loader / binaries against an extracted rootfs (no binfmt needed:
+# qemu-arm-static is invoked explicitly with -L <rootfs>).
+FROM axe7800-build
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends qemu-user-static squashfs-tools \
+ && rm -rf /var/lib/apt/lists/*
+USER builder

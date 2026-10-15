@@ -132,7 +132,10 @@ if [ -s "$CONTRACT" ]; then
   N=$(wc -l < "$WORK/contract.txt")
   : > "$WORK/have.txt"
   [ -n "$P_O" ] && defsyms "$P_O" >> "$WORK/have.txt"
-  for c in $W_C $P_C; do [ -n "$c" ] && grep -oE '^[A-Za-z_][A-Za-z0-9_]*[[:space:]]*\(' "$c" 2>/dev/null | tr -d ' (' >> "$WORK/have.txt"; done
+  # Column-0 function definitions, with or without the return type on the same line
+  # ("b64_decode(" and "int set_app_mnt(char *x)"); prototypes ending in ';' are excluded.
+  for c in $W_C $P_C; do [ -n "$c" ] && grep -E '^[A-Za-z_][A-Za-z0-9_[:space:]*]*\(' "$c" 2>/dev/null \
+    | grep -vE ';[[:space:]]*$' | sed -E 's/[[:space:]]*\(.*//; s/.*[^A-Za-z0-9_]//' >> "$WORK/have.txt"; done
   grep -v '^#' "$CONTRACT" | awk '$2=="OPEN"{print $1}' >> "$WORK/have.txt"
   sort -u "$WORK/have.txt" -o "$WORK/have.txt"
   MISS=$(comm -23 "$WORK/contract.txt" "$WORK/have.txt")

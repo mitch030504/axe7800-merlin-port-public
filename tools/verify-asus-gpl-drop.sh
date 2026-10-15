@@ -163,11 +163,41 @@ find_src_alt(){ # $1 = object
   return 0
 }
 
+# Raw-ASUS flat layout (<component>/prebuild/<obj>, no per-model directory) is accepted only
+# when the package's own model-conditional rc object proves which model it was built for:
+# every model-name string compiled into rc/prebuild/init-broadcom.o must be RT-AXE7800.
+# A path or filename alone never establishes this.
+RAW_FLAT_OK=no; RAW_FLAT_WHY="no Merlin per-model layout and no flat identity marker"
+if ! grep -qE 'shared/prebuild/RT-AXE7800/' "$INDEX"; then
+  ib=$(grep -E '(^|/)release/src/router/rc/prebuild/init-broadcom\.o$' "$INDEX" | head -1 || true)
+  if [ -n "$ib" ]; then
+    ibp=$(extract_one "$ib")
+    if [ -n "$ibp" ] && [ -f "$ibp" ]; then
+      models=$(strings -a "$ibp" | grep -oE '\b(RT|GT|TUF|XT|ET|RP|BR|BM|XD|EBA)-[A-Z0-9_]+\b' | grep -E 'AX|AC|BE' | LC_ALL=C sort -u | tr '\n' ' ' || true)
+      if [ "$models" = "RT-AXE7800 " ]; then
+        RAW_FLAT_OK=yes; RAW_FLAT_WHY="rc/prebuild/init-broadcom.o model strings = RT-AXE7800 only"
+      else
+        RAW_FLAT_WHY="rc/prebuild/init-broadcom.o model strings: ${models:-none}"
+      fi
+    fi
+  fi
+fi
+echo "raw-ASUS flat layout accepted: $RAW_FLAT_OK ($RAW_FLAT_WHY)"
+shared_obj_re(){ # $1 = object -> regex for an accepted shared prebuild location
+  if [ "$RAW_FLAT_OK" = yes ]; then printf '(shared/prebuild/RT-AXE7800/|(^|/)release/src/router/shared/prebuild/)%s$' "$1"
+  else printf 'shared/prebuild/RT-AXE7800/%s$' "$1"; fi
+}
+echo
+
 check_object(){ # $1 = object name ; prints status, sets RESULT
   local o="$1" hits n=0 satisfied=no alt
   RESULT="MISSING"
   echo "--- $o ---"
   hits=$(grep -E "shared/prebuild/RT-AXE7800/${o}$" "$INDEX" || true)
+  if [ -z "$hits" ] && [ "$RAW_FLAT_OK" = yes ]; then
+    hits=$(grep -E "(^|/)release/src/router/shared/prebuild/${o}$" "$INDEX" || true)
+    [ -n "$hits" ] && echo "      layout: raw-ASUS flat (identity: $RAW_FLAT_WHY)"
+  fi
   if [ -n "$hits" ]; then
     while IFS= read -r h; do
       [ -n "$h" ] || continue
@@ -221,7 +251,7 @@ echo " FEATURE_GATED_EXPECTED (shipped for other BCM6756 models;"
 echo " NOT required by the current config — never affects exit code)"
 echo "=============================================================="
 for o in $FEATURE_GATED_EXPECTED; do
-  if grep -qE "shared/prebuild/RT-AXE7800/${o}$" "$INDEX"; then
+  if grep -qE "$(shared_obj_re "$o")" "$INDEX"; then
     echo "  PRESENT              $o"
   else
     find_src_alt "$o"
@@ -236,7 +266,7 @@ echo
 echo "  -- NON_6756_OPTIONAL (present only in the BCM4912 donor; not part of either"
 echo "     BCM6756 17-object set; informational, never affects exit code) --"
 for o in $NON_6756_OPTIONAL; do
-  if grep -qE "shared/prebuild/RT-AXE7800/${o}$" "$INDEX"; then
+  if grep -qE "$(shared_obj_re "$o")" "$INDEX"; then
     echo "  PRESENT              $o"
   else
     echo "  ABSENT (expected)    $o"
@@ -249,7 +279,7 @@ echo " Completeness: full BCM6756-style shared/prebuild inventory (17)"
 echo "=============================================================="
 have=0; miss=""
 for o in $FULL_6756_SET; do
-  if grep -qE "shared/prebuild/RT-AXE7800/${o}$" "$INDEX"; then have=$((have+1)); else miss="$miss $o"; fi
+  if grep -qE "$(shared_obj_re "$o")" "$INDEX"; then have=$((have+1)); else miss="$miss $o"; fi
 done
 echo "  present: $have of 17"
 [ -n "$miss" ] && echo "  absent :$miss"
