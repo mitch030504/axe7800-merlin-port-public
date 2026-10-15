@@ -1,0 +1,15 @@
+__cxa_atexit	bwdpi_source/prebuild/wred
+__cxa_finalize	amas-utils/prebuild/libamas-utils.so,asd/prebuild/libasd.so,bwdpi_source/prebuild/libshn_pctrl.so,bwdpi_source/prebuild/libshn_utils.so,cfg_mnt/prebuild/libcfgmnt.so,libasc/prebuild/libasc.so,libasuslog/prebuild/libasuslog.so,libletsencrypt/prebuild/libletsencrypt.so,libvpn/prebuild/libvpn.so,lighttpd-1.4.39/prebuild/mod_aicloud_auth.so,lighttpd-1.4.39/prebuild/mod_aicloud_invite.so,lighttpd-1.4.39/prebuild/mod_aicloud_sharelink.so,lighttpd-1.4.39/prebuild/mod_aidisk_access.so,lighttpd-1.4.39/prebuild/mod_captive_portal_uam.so,lighttpd-1.4.39/prebuild/mod_create_captcha_image.so,lighttpd-1.4.39/prebuild/mod_query_field_json.so,lighttpd-1.4.39/prebuild/mod_smbdav.so,wb/prebuild/libws.so,wlc_nt/prebuild/libwlc_nt_client.so
+alarm	ahs/prebuild/ahs,bwdpi_source/prebuild/dcd,rc/prebuild/amas_bhctrl.o,rc/prebuild/amas_lanctrl.o,rc/prebuild/amas_lib.o,rc/prebuild/bwdpi_check.o,rc/prebuild/bwdpi_db_10.o,rc/prebuild/conn_diag.o,rc/prebuild/gpy211_war.o,rc/prebuild/obd.o,rc/prebuild/obd_eth.o,rc/prebuild/obd_monitor.o,rc/prebuild/psta_monitor.o,u2ec/prebuild/u2ec,wlc_nt/prebuild/wlc_monitor
+closelog	aaews/prebuild/aaews,aaews/prebuild/mastiff,wb/prebuild/libws.so
+gmtime	bwdpi_source/prebuild/dcd,lighttpd-1.4.39/prebuild/mod_smbdav.so
+inet_addr	aaews/prebuild/aaews,aaews/prebuild/mastiff,cfg_mnt/prebuild/cfg_server,libvpn/prebuild/libvpn.so,networkmap/prebuild/asusdiscovery,rc/prebuild/broadcom.o
+inet_ntoa	aaews/prebuild/aaews,cfg_mnt/prebuild/cfg_client,cfg_mnt/prebuild/cfg_server,httpd/prebuild/web_hook.o,libvpn/prebuild/libvpn.so,networkmap/prebuild/asusdiscovery,networkmap/prebuild/find_cap,rc/prebuild/amas_wgn.o,rc/prebuild/conn_diag.o,rc/prebuild/hostapd_config_6e.o,u2ec/prebuild/u2ec
+memchr	bwdpi_source/prebuild/dcd,bwdpi_source/prebuild/libshn_pctrl.so,bwdpi_source/prebuild/libshn_utils.so,bwdpi_source/prebuild/wred,lighttpd-1.4.39/prebuild/mod_smbdav.so,shared/prebuild/bcmutils.o
+openlog	aaews/prebuild/aaews,aaews/prebuild/mastiff,bwdpi_source/prebuild/libshn_utils.so,protect_srv/prebuild/Send_Event2ptcsrv,wb/prebuild/libws.so
+random	bwdpi_source/prebuild/wred
+setitimer	fsmd/prebuild/fsmd,rc/prebuild/bwdpi_wred_alive.o,rc/prebuild/dslited.o,rc/prebuild/obd.o,rc/prebuild/obd_eth.o,rc/prebuild/obd_monitor.o,rc/prebuild/ocnvcd.o,rc/prebuild/psta_monitor.o,rc/prebuild/roamast.o,rc/prebuild/v6plusd.o
+setpriority	bwdpi_source/prebuild/libshn_utils.so,bwdpi_source/prebuild/tcd
+sysinfo	cfg_mnt/prebuild/cfg_server,protect_srv/prebuild/protect_srv,protect_srv/prebuild/req_ptcsrv,rc/prebuild/dsl_fb.o
+tcgetattr	bwdpi_source/prebuild/dcd,bwdpi_source/prebuild/libshn_pctrl.so,bwdpi_source/prebuild/wred
+tcsetattr	bwdpi_source/prebuild/dcd,bwdpi_source/prebuild/libshn_pctrl.so,bwdpi_source/prebuild/wred

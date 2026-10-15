@@ -1,0 +1,21 @@
+{
+ "consumers": 136,
+ "link_consumers": 76,
+ "run_consumers": 60,
+ "imported_symbols_not_from_prebuilts": 1238,
+ "open_provided_in_gpl": 879,
+ "candidates": {
+  "pin": {
+   "ref": "ccd139a31d94de15d2da744083dbafbcfe97dcdf",
+   "missing": 15
+  },
+  "tip": {
+   "ref": "origin/3006.102-wifi6",
+   "missing": 15
+  },
+  "m388": {
+   "ref": "origin/3004.388",
+   "missing": 15
+  }
+ }
+}
