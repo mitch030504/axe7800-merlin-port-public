@@ -1,0 +1,51 @@
+# router, 2026-10-15T05:33:10Z (read-only: free, /proc/meminfo, ps); logged in router-commands.txt
+             total       used       free     shared    buffers     cached
+Mem:        508152     249644     258508       4552      18064      49252
+-/+ buffers/cache:     182328     325824
+Swap:            0          0          0
+---
+MemTotal:         508152 kB
+MemAvailable:     267252 kB
+---
+147
+---
+      3 hostapd
+      3 3]
+      3 2]
+      3 1]
+      3 0]
+      2 sort
+      2 sh
+      2 lldpd
+      2 dropbear
+      2 dnsmasq
+      1 {wdtctl}
+      1 wpsaide
+      1 wps_pbcd
+      1 wlceventd
+      1 wlc_nt
+      1 wlc_monitor
+      1 watchdog
+      1 wanduck
+      1 usbmuxd
+      1 usbled
+      1 uniq
+      1 udhcpc
+      1 u8:1-fl]
+      1 u8:0]
+      1 sysstate
+      1 syslogd
+      1 stubby
+      1 sed
+      1 sched_daemon
+      1 rstats
+      1 roamast
+      1 ps
+      1 protect_srv
+      1 pctime
+      1 ntp
+      1 nt_monitor
+      1 nt_center
+      1 nt_actMail
+      1 networkmap
+      1 netool

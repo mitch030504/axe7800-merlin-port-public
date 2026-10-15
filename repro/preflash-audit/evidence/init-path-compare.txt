@@ -1,0 +1,214 @@
+start_hw_wdt                             IDENTICAL
+rc_cled_init                             IDENTICAL
+mknod                                    UNDEFINED/INLINE (compiled out or header inline for this model)
+mount                                    UNDEFINED/INLINE (compiled out or header inline for this model)
+check_rtk_hw_invaild                     UNDEFINED/INLINE (compiled out or header inline for this model)
+init_devs                                DIFFERS (37 lines)
+is_ax5400_i1                             UNDEFINED/INLINE (compiled out or header inline for this model)
+opendir                                  UNDEFINED/INLINE (compiled out or header inline for this model)
+readdir                                  UNDEFINED/INLINE (compiled out or header inline for this model)
+var_nvram_init                           UNDEFINED/INLINE (compiled out or header inline for this model)
+limit_page_cache_ratio                   IDENTICAL
+set_pcie_aspm                            IDENTICAL
+init_devs_defer                          UNDEFINED/INLINE (compiled out or header inline for this model)
+start_hotplug2                           IDENTICAL
+set_action                               IDENTICAL
+run_shell                                DIFFERS (5 lines)
+cfe_nvram_safe_get                       PREBUILT (ASUS 25206 object, linked unchanged)
+reset_abmac                              UNDEFINED/INLINE (compiled out or header inline for this model)
+pre_syspara                              UNDEFINED/INLINE (compiled out or header inline for this model)
+init_syspara                             DIFFERS (680 lines)
+get_model                                IDENTICAL
+rtl_configRps                            STOCK-ONLY source
+force_free_caches                        DIFFERS (3 lines)
+check_upgrade_from_old_ui                STOCK-ONLY source
+post_syspara                             STOCK-ONLY source
+psr_mode                                 UNDEFINED/INLINE (compiled out or header inline for this model)
+psta_exist                               IDENTICAL
+dpsta_mode                               UNDEFINED/INLINE (compiled out or header inline for this model)
+fa_mode_init                             UNDEFINED/INLINE (compiled out or header inline for this model)
+sw_mode                                  UNDEFINED/INLINE (compiled out or header inline for this model)
+gt10_nvram_convert                       UNDEFINED/INLINE (compiled out or header inline for this model)
+num_of_wl_if                             IDENTICAL
+init_nvram                               DIFFERS (48 lines)
+start_jffs2                              DIFFERS (17 lines)
+restore_defaults                         UNDEFINED/INLINE (compiled out or header inline for this model)
+init_nvram2                              DIFFERS (16 lines)
+reset_psr_hwaddr                         PREBUILT (ASUS 25206 object, linked unchanged)
+update_rf_para                           UNDEFINED/INLINE (compiled out or header inline for this model)
+set_hostname                             UNDEFINED/INLINE (compiled out or header inline for this model)
+avblchan_defaults                        UNDEFINED/INLINE (compiled out or header inline for this model)
+init_asusctrl                            PREBUILT (ASUS 25206 object, linked unchanged)
+asus_ctrl_nv_restore                     PREBUILT (ASUS 25206 object, linked unchanged)
+chk_gmac3_excludes                       IDENTICAL
+gmac3_restore_nvram                      UNDEFINED/INLINE (compiled out or header inline for this model)
+get_label_mac                            PREBUILT (ASUS 25206 object, linked unchanged)
+write_caldata_file                       IDENTICAL
+handle_location_code_for_wl              UNDEFINED/INLINE (compiled out or header inline for this model)
+init_gpio                                IDENTICAL
+set_led                                  UNDEFINED/INLINE (compiled out or header inline for this model)
+setAllLedOff                             PREBUILT (ASUS 25206 object, linked unchanged)
+start_led_monitor                        UNDEFINED/INLINE (compiled out or header inline for this model)
+init_swmode                              IDENTICAL
+init_others                              IDENTICAL
+config_ext_wan_port                      PREBUILT (ASUS 25206 object, linked unchanged)
+init_switch                              DIFFERS (4 lines)
+upgrade_bootloader_v2                    UNDEFINED/INLINE (compiled out or header inline for this model)
+init_nvram3                              IDENTICAL
+set_uuid                                 STOCK-ONLY source
+init_wl                                  DIFFERS (356 lines)
+setup_conntrack                          DIFFERS (5 lines)
+setup_timezone                           UNDEFINED/INLINE (compiled out or header inline for this model)
+xstart                                   UNDEFINED/INLINE (compiled out or header inline for this model)
+usb3_enable                              UNDEFINED/INLINE (compiled out or header inline for this model)
+atoi                                     UNDEFINED/INLINE (compiled out or header inline for this model)
+chk_etfa                                 UNDEFINED/INLINE (compiled out or header inline for this model)
+start_thermald                           STOCK-ONLY source
+set_power_save_mode                      UNDEFINED/INLINE (compiled out or header inline for this model)
+restart_fanctrl                          UNDEFINED/INLINE (compiled out or header inline for this model)
+reset_stacksize                          IDENTICAL
+init_wan46                               IDENTICAL
+convert_pc_sched_v1_to_sched_v2          IDENTICAL
+convert_wl_sched_v1_to_sched_v2          IDENTICAL
+gen_bcmbsd_def_policy                    UNDEFINED/INLINE (compiled out or header inline for this model)
+record_prev_sys_uptime                   IDENTICAL
+reset_corefilesize                       IDENTICAL
+sysinit2                                 IDENTICAL
+console_init                             DIFFERS (8 lines)
+setAllLedOn                              PREBUILT (ASUS 25206 object, linked unchanged)
+led_control                              UNDEFINED/INLINE (compiled out or header inline for this model)
+config_format_compatibility_handler      DIFFERS (1 lines)
+adjust_merlin_config                     MERLIN-ONLY source
+adjust_url_urlelist                      IDENTICAL
+adjust_ddns_config                       IDENTICAL
+adjust_access_restrict_config            IDENTICAL
+adjust_vpnc_config                       IDENTICAL
+sync_nc_conf                             UNDEFINED/INLINE (compiled out or header inline for this model)
+run_rc_local                             UNDEFINED/INLINE (compiled out or header inline for this model)
+stat                                     UNDEFINED/INLINE (compiled out or header inline for this model)
+init_nvram4                              IDENTICAL
+cfe_nvram_safe_get_raw                   PREBUILT (ASUS 25206 object, linked unchanged)
+pw_enc_blen                              PREBUILT (ASUS 25206 object, linked unchanged)
+malloc                                   UNDEFINED/INLINE (compiled out or header inline for this model)
+memset                                   UNDEFINED/INLINE (compiled out or header inline for this model)
+pw_enc                                   PREBUILT (ASUS 25206 object, linked unchanged)
+free                                     UNDEFINED/INLINE (compiled out or header inline for this model)
+getRebootPartition                       IDENTICAL
+getSequenceNumber                        UNDEFINED/INLINE (compiled out or header inline for this model)
+getBootImageState                        UNDEFINED/INLINE (compiled out or header inline for this model)
+case                                     UNDEFINED/INLINE (compiled out or header inline for this model)
+chk_same_boot_policy                     IDENTICAL
+getBootPartition                         UNDEFINED/INLINE (compiled out or header inline for this model)
+boot                                     UNDEFINED/INLINE (compiled out or header inline for this model)
+sync_boot_state                          IDENTICAL
+setBootImageState                        UNDEFINED/INLINE (compiled out or header inline for this model)
+init_main                                DIFFERS (6 lines)
+set_pwr_modem                            IDENTICAL
+sysinit                                  DIFFERS (34 lines)
+set_pwr_usb                              IDENTICAL
+add_usb_host_modules                     IDENTICAL
+add_usb_modem_modules                    IDENTICAL
+init_others_defer                        UNDEFINED/INLINE (compiled out or header inline for this model)
+restore_cert                             IDENTICAL
+create_amas_sys_folder                   PREBUILT (ASUS 25206 object, linked unchanged)
+init_pass_nvram                          IDENTICAL
+init_enc_nvram                           PREBUILT (ASUS 25206 object, linked unchanged)
+setup_passwd                             IDENTICAL
+get_syslog_fname                         IDENTICAL
+mtd_export_crashlog                      PREBUILT (ASUS 25206 object, linked unchanged)
+asm1042_upgrade                          IDENTICAL
+run_custom_script                        IDENTICAL
+use_custom_config                        IDENTICAL
+run_postconf                             IDENTICAL
+get_wans_dualwan                         IDENTICAL
+handle_notifications                     DIFFERS (448 lines)
+execv                                    UNDEFINED/INLINE (compiled out or header inline for this model)
+rc                                       UNDEFINED/INLINE (compiled out or header inline for this model)
+getpid                                   UNDEFINED/INLINE (compiled out or header inline for this model)
+stop_mcsd                                UNDEFINED/INLINE (compiled out or header inline for this model)
+d_exists                                 IDENTICAL
+stop_services                            UNDEFINED/INLINE (compiled out or header inline for this model)
+stop_wan                                 UNDEFINED/INLINE (compiled out or header inline for this model)
+reset_plc                                UNDEFINED/INLINE (compiled out or header inline for this model)
+stop_lan                                 IDENTICAL
+stop_vlan                                IDENTICAL
+remove_storage_main                      IDENTICAL
+stop_usb                                 DIFFERS (508 lines)
+stop_usbled                              UNDEFINED/INLINE (compiled out or header inline for this model)
+stop_logger                              UNDEFINED/INLINE (compiled out or header inline for this model)
+stop_lan_port                            IDENTICAL
+start_lan_port                           IDENTICAL
+shutdn                                   IDENTICAL
+start_logger                             UNDEFINED/INLINE (compiled out or header inline for this model)
+dbG                                      UNDEFINED/INLINE (compiled out or header inline for this model)
+stop_rtl_watchdog                        UNDEFINED/INLINE (compiled out or header inline for this model)
+start_rtl_watchdog                       UNDEFINED/INLINE (compiled out or header inline for this model)
+gen_rtlbt_fw_config                      UNDEFINED/INLINE (compiled out or header inline for this model)
+ate_commit_bootlog                       PREBUILT (ASUS 25206 object, linked unchanged)
+ipv6_enabled                             UNDEFINED/INLINE (compiled out or header inline for this model)
+is_routing_enabled                       UNDEFINED/INLINE (compiled out or header inline for this model)
+set_default_accept_ra                    IDENTICAL
+start_vlan                               IDENTICAL
+config_switch                            DIFFERS (506 lines)
+start_dsl                                IDENTICAL
+update_11ax_config                       UNDEFINED/INLINE (compiled out or header inline for this model)
+start_lan                                DIFFERS (10 lines)
+init_moca                                IDENTICAL
+start_moca                               IDENTICAL
+start_wl                                 IDENTICAL
+lanaccess_wl                             DIFFERS (1 lines)
+start_qtn                                IDENTICAL
+misc_ioctrl                              UNDEFINED/INLINE (compiled out or header inline for this model)
+ate_factory_mode                         UNDEFINED/INLINE (compiled out or header inline for this model)
+start_services                           UNDEFINED/INLINE (compiled out or header inline for this model)
+slabdbg                                  PREBUILT (ASUS 25206 object, linked unchanged)
+restart_wireless                         DIFFERS (14 lines)
+start_qtn_monitor                        UNDEFINED/INLINE (compiled out or header inline for this model)
+check_wlx_nband_type                     PREBUILT (ASUS 25206 object, linked unchanged)
+tr_switch_wan_line                       UNDEFINED/INLINE (compiled out or header inline for this model)
+start_wan                                UNDEFINED/INLINE (compiled out or header inline for this model)
+start_gpy211_monitor                     PREBUILT (ASUS 25206 object, linked unchanged)
+is_router_mode                           UNDEFINED/INLINE (compiled out or header inline for this model)
+dualwan_unit__nonusbif                   UNDEFINED/INLINE (compiled out or header inline for this model)
+get_productid                            IDENTICAL
+eth_phypower                             IDENTICAL
+start_mcpd_proxy                         UNDEFINED/INLINE (compiled out or header inline for this model)
+set_gpio                                 PREBUILT (ASUS 25206 object, linked unchanged)
+gen_termal_config                        UNDEFINED/INLINE (compiled out or header inline for this model)
+doSystem                                 IDENTICAL
+detwan_set_net_block                     IDENTICAL
+wds_enable                               IDENTICAL
+stop_nas                                 UNDEFINED/INLINE (compiled out or header inline for this model)
+start_nas                                UNDEFINED/INLINE (compiled out or header inline for this model)
+set_wantolan                             UNDEFINED/INLINE (compiled out or header inline for this model)
+get_wifname                              UNDEFINED/INLINE (compiled out or header inline for this model)
+stop_wanduck                             IDENTICAL
+start_telnetd                            UNDEFINED/INLINE (compiled out or header inline for this model)
+pcie_probe_check                         UNDEFINED/INLINE (compiled out or header inline for this model)
+config_obw                               PREBUILT (ASUS 25206 object, linked unchanged)
+reset_ext_phy                            IDENTICAL
+factory_debug                            PREBUILT (ASUS 25206 object, linked unchanged)
+check_4366_dummy                         UNDEFINED/INLINE (compiled out or header inline for this model)
+check_4366_fabid                         UNDEFINED/INLINE (compiled out or header inline for this model)
+ate_dev_status                           IDENTICAL
+strchr                                   UNDEFINED/INLINE (compiled out or header inline for this model)
+start_usb                                DIFFERS (2 lines)
+start_usbled                             UNDEFINED/INLINE (compiled out or header inline for this model)
+strstr                                   UNDEFINED/INLINE (compiled out or header inline for this model)
+ate_run_in_preconfig                     UNDEFINED/INLINE (compiled out or header inline for this model)
+ate_run_in                               UNDEFINED/INLINE (compiled out or header inline for this model)
+ate_stress_pkteng                        PREBUILT (ASUS 25206 object, linked unchanged)
+safe_atoi                                UNDEFINED/INLINE (compiled out or header inline for this model)
+_start_telnetd                           UNDEFINED/INLINE (compiled out or header inline for this model)
+ate_run_arpstrom                         IDENTICAL
+add_remove_usbhost                       IDENTICAL
+start_usblpsrv                           IDENTICAL
+start_misc_services                      PREBUILT (ASUS 25206 object, linked unchanged)
+misc_ctrl_post                           PREBUILT (ASUS 25206 object, linked unchanged)
+strcat_r                                 UNDEFINED/INLINE (compiled out or header inline for this model)
+mediabridge_mode                         UNDEFINED/INLINE (compiled out or header inline for this model)
+set_rgbled                               IDENTICAL
+check_services                           DIFFERS (3 lines)
+monitor_asd                              PREBUILT (ASUS 25206 object, linked unchanged)
+sigwaitinfo                              UNDEFINED/INLINE (compiled out or header inline for this model)
+get_process_name_by_pid                  IDENTICAL

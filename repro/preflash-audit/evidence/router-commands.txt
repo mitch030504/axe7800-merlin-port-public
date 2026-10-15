@@ -1,0 +1,16 @@
+# Read-only commands run on the owner RT-AXE7800 (192.168.8.1), one per line, UTC.
+# Earlier session commands: cat /proc/version; nvram get <id keys>; cat /proc/mtd; dmesg|grep; ubinfo -a; strings of /dev/mtd{4,5} (metadata); ls/cat /proc/environment/*; ls -l /proc/bootstate; lsmod; sha256sum <binaries>; cat <wl.ko,dhd.ko,rtecdc.bin>; nvram show|cut -d= -f1; zcat /proc/config.gz; cat /dev/ubi0_5; cat /dev/ubi0_6
+2026-10-14T17:33:29Z	df -k /tmp /var /jffs 2>/dev/null; grep -E "MemTotal|MemFree|MemAvailable|Cached|Shmem" /proc/meminfo; mount | grep -E " /tmp | /var | / " 
+2026-10-14T17:35:14Z	grep loader /proc/mtd
+2026-10-14T17:35:14Z	cat /dev/mtd1 (read loader partition)
+2026-10-15T05:13:27Z	free; echo ---; ps w | awk "NR>1{print \$5}" | sed "s|.*/||" | sort | uniq -c | sort -rn | head -40; echo ---; ps | wc -l
+2026-10-15T05:14:02Z	cat /dev/ubi0_5 (re-read retail bootfs2 after scratch loss)
+2026-10-15T05:14:58Z	dmesg
+2026-10-15T05:33:10Z	free; echo ---; grep -E "MemTotal|MemAvailable" /proc/meminfo; echo ---; ps | wc -l; echo ---; ps w | awk "NR>1{print \$5}" | sed "s|.*/||" | sort | uniq -c | sort -rn | head -40
+2026-10-15T05:34:41Z	nvram get lan_stp; nvram get sw_mode; brctl show br0 | head -2; cat /sys/class/net/br0/bridge/stp_state
+2026-10-15T05:38:59Z	nvram get hapd_enable; nvram get switch_stb_x; nvram get switch_wantag; nvram get x_Setting; pidof hostapd
+2026-10-15T14:48:17Z	ls -l /jffs/nvram/dhcp_hostnames 2>&1; df /jffs | tail -1; ls /jffs
+2026-10-15T14:48:17Z	nvram get dhcp_staticlist | tr "<" "\n" | awk -F">" "NF>0{c[NF]++} END{for(k in c) print \"fields=\" k, c[k]}"
+2026-10-15T14:48:17Z	echo sshd_enable=$(nvram get sshd_enable) fw_enable_x=$(nvram get fw_enable_x) sshd_wan=$(nvram get sshd_wan) sw_mode=$(nvram get sw_mode)
+2026-10-15T14:48:18Z	for i in 1 2; do echo server$i eas=$(nvram get vpn_server${i}_eas) start=$(nvram get vpn_server${i}_start) custom_len=$(nvram get vpn_server${i}_custom | wc -c); done; for i in 1 2 3 4 5; do echo client$i custom_len=$(nvram get vpn_client${i}_custom | wc -c); done; echo vpn_serverx_eas=$(nvram get vpn_serverx_eas) vpnc_clientlist_len=$(nvram get vpnc_clientlist | wc -c); echo wg_enable=$(nvram get wgs_enable); ls /jffs/openvpn 2>&1 | head
+2026-10-15T14:48:25Z	echo state=$(nvram get vpn_server1_state) proto=$(nvram get vpn_server1_proto) port=$(nvram get vpn_server1_port) if=$(nvram get vpn_server1_if) crt_len=$(nvram get vpn_crt_server1_ca | wc -c) ; pidof openvpn vpnserver1 2>&1; ps | grep -i [o]penvpn | cut -c1-80

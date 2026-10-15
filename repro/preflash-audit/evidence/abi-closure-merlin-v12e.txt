@@ -1,0 +1,7 @@
+# dynamic ELFs: 619; unresolved symbols: 5 in 2 files; missing sonames: 1
+MISSING-SONAME	libbcm_crc.so	usr/sbin/lld2d
+UNRESOLVED	lib/libbcm_boardctl.so	ulog_log
+UNRESOLVED	lib/libbcm_flashutil.so	genUtl_getCrc32
+UNRESOLVED	lib/libbcm_flashutil.so	genUtl_getCrc32Staged
+UNRESOLVED	lib/libbcm_flashutil.so	sysUtil_isFilePresent
+UNRESOLVED	lib/libbcm_flashutil.so	ulog_log

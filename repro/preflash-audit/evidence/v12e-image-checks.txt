@@ -1,0 +1,12 @@
+== FIT
+RT-AXE7800
+bootfs_6756_a0+ MATCH
+nand_squashfs MATCH
+fdt_RT_AXE7800 b8fba56a66f3526b  fdt_uboot 4a5f70559564fa55
+== u-boot MXIC fix (0xFF env fill) compiled in? hashtable export path:
+5
+== depmod
+0
+153
+== MXIC driver WAR strings:
+0

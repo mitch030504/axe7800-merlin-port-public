@@ -1,0 +1,85 @@
+######## s
+atf uboot fdt_uboot kernel fdt_947623EAP6L fdt_947623EAP6LL fdt_947623EAPL2526 fdt_947623XEAPL2526 fdt_96756 fdt_96756REF1 fdt_96756REF1_SG fdt_96756RF_DVT fdt_96756RFDVT_FAKE fdt_96756SV fdt_96757REF1T fdt_96757REF2T fdt_96757SV fdt_BM68 fdt_BR63 fdt_EBA63 fdt_ET8_V2 fdt_ET8_V2_GPY211 fdt_ET8PRO fdt_ET8PRO_GPY211 fdt_RP_AX58 fdt_RT-AX55 fdt_RT_AX3000N fdt_RT_AX58U_V2 fdt_RT_AXE7800 fdt_TUF_AX3000_V2 fdt_XC5 fdt_XD4PRO fdt_XD4PROIPA fdt_XD4PROIPA_DDR3 fdt_XT8_V2 fdt_XT8_V2_50991 fdt_XT8PRO fdt_XT8PRO_GPY211 
+conf_uboot conf_linux conf_lx_947623EAP6L conf_ub_947623EAP6L conf_lx_947623EAP6LL conf_ub_947623EAP6LL conf_lx_947623EAPL2526 conf_ub_947623EAPL2526 conf_lx_947623XEAPL2526 conf_ub_947623XEAPL2526 conf_lx_96756 conf_ub_96756 conf_lx_96756REF1 conf_ub_96756REF1 conf_lx_96756REF1_SG conf_ub_96756REF1_SG conf_lx_96756RF_DVT conf_ub_96756RF_DVT conf_lx_96756RFDVT_FAKE conf_ub_96756RFDVT_FAKE conf_lx_96756SV conf_ub_96756SV conf_lx_96757REF1T conf_ub_96757REF1T conf_lx_96757REF2T conf_ub_96757REF2T conf_lx_96757SV conf_ub_96757SV conf_lx_BM68 conf_ub_BM68 conf_lx_BR63 conf_ub_BR63 conf_lx_EBA63 conf_ub_EBA63 conf_lx_ET8_V2 conf_ub_ET8_V2 conf_lx_ET8_V2_GPY211 conf_ub_ET8_V2_GPY211 conf_lx_ET8PRO conf_ub_ET8PRO conf_lx_ET8PRO_GPY211 conf_ub_ET8PRO_GPY211 conf_lx_RP_AX58 conf_ub_RP_AX58 conf_lx_AX55 conf_ub_AX55 conf_lx_RT_AX3000N conf_ub_RT_AX3000N conf_lx_RT_AX58U_V2 conf_ub_RT_AX58U_V2 conf_lx_RT_AXE7800 conf_ub_RT_AXE7800 conf_lx_TUF_AX3000_V2 conf_ub_TUF_AX3000_V2 conf_lx_XC5 conf_ub_XC5 conf_lx_XD4PRO conf_ub_XD4PRO conf_lx_XD4PROIPA conf_ub_XD4PROIPA conf_lx_XD4PROIPA_DDR3 conf_ub_XD4PROIPA_DDR3 conf_lx_XT8_V2 conf_ub_XT8_V2 conf_lx_XT8_V2_50991 conf_ub_XT8_V2_50991 conf_lx_XT8PRO conf_ub_XT8PRO conf_lx_XT8PRO_GPY211 conf_ub_XT8PRO_GPY211 
+  atf: ATF sha256=b4e4ef3ca5aaa9f5
+  uboot: U-Boot sha256=caf2b3bb82f6b89a
+  fdt_uboot: dtb sha256=4a5f70559564fa55
+  kernel: 4.19 kernel sha256=6a3cd25c92519114
+  fdt_947623EAP6L: dtb sha256=02240dfbfa2229b3
+  fdt_947623EAP6LL: dtb sha256=03f8d15f39e65a2b
+  fdt_947623EAPL2526: dtb sha256=3f064c48eef8428f
+  fdt_947623XEAPL2526: dtb sha256=5ea7d412a012ad2d
+  fdt_96756: dtb sha256=f0db2a2ea189c7b6
+  fdt_96756REF1: dtb sha256=320bc9416df78de4
+  fdt_96756REF1_SG: dtb sha256=f6ac9e830f7b8fb6
+  fdt_96756RF_DVT: dtb sha256=333c53db5b012c43
+  fdt_96756RFDVT_FAKE: dtb sha256=10afed58ee07757e
+  fdt_96756SV: dtb sha256=e1f6475a018b50cb
+  fdt_96757REF1T: dtb sha256=efb5165ea3fabdd8
+  fdt_96757REF2T: dtb sha256=5f76e42c23b5383e
+  fdt_96757SV: dtb sha256=91c32b0c365a0fd5
+  fdt_BM68: dtb sha256=db86ebcfdc2e63e8
+  fdt_BR63: dtb sha256=044d7c2c21aa8f07
+  fdt_EBA63: dtb sha256=71608b0dfe423d0c
+  fdt_ET8_V2: dtb sha256=6f7e085c32327fe8
+  fdt_ET8_V2_GPY211: dtb sha256=a84d147912bdcb31
+  fdt_ET8PRO: dtb sha256=1eb1f6792ab9de5c
+  fdt_ET8PRO_GPY211: dtb sha256=b1fc065cd867fb1a
+  fdt_RP_AX58: dtb sha256=d8c74a1b339ca6d2
+  fdt_RT-AX55: dtb sha256=e1f6475a018b50cb
+  fdt_RT_AX3000N: dtb sha256=45667eb546800094
+  fdt_RT_AX58U_V2: dtb sha256=f87b7f004f147cc5
+  fdt_RT_AXE7800: dtb sha256=b8fba56a66f3526b
+  fdt_TUF_AX3000_V2: dtb sha256=53e0a1f464c05944
+  fdt_XC5: dtb sha256=64c9a5d0f5f5429c
+  fdt_XD4PRO: dtb sha256=310a9e4cb43c8f49
+  fdt_XD4PROIPA: dtb sha256=f2932b6815e6d41b
+  fdt_XD4PROIPA_DDR3: dtb sha256=bbb7ed3797a1e5d2
+  fdt_XT8_V2: dtb sha256=adca78f9a4fe3613
+  fdt_XT8_V2_50991: dtb sha256=3c84b0ebf9ef4df1
+  fdt_XT8PRO: dtb sha256=86d476bca81fec0b
+  fdt_XT8PRO_GPY211: dtb sha256=3063f61bdfa85918
+######## m
+atf uboot fdt_uboot kernel fdt_947623EAP6L fdt_947623EAP6LL fdt_947623EAPL2526 fdt_947623XEAPL2526 fdt_96756 fdt_96756REF1 fdt_96756REF1_SG fdt_96756RF_DVT fdt_96756RFDVT_FAKE fdt_96756SV fdt_96757REF1T fdt_96757REF2T fdt_96757SV fdt_BM68 fdt_BR63 fdt_EBA63 fdt_ET8_V2 fdt_ET8_V2_GPY211 fdt_ET8PRO fdt_ET8PRO_GPY211 fdt_RP_AX58 fdt_RT-AX55 fdt_RT_AX3000N fdt_RT_AX58U_V2 fdt_RT_AXE7800 fdt_TUF_AX3000_V2 fdt_XC5 fdt_XD4PRO fdt_XD4PROIPA fdt_XD4PROIPA_DDR3 fdt_XT8_V2 fdt_XT8_V2_50991 fdt_XT8PRO fdt_XT8PRO_GPY211 
+conf_uboot conf_linux conf_lx_947623EAP6L conf_ub_947623EAP6L conf_lx_947623EAP6LL conf_ub_947623EAP6LL conf_lx_947623EAPL2526 conf_ub_947623EAPL2526 conf_lx_947623XEAPL2526 conf_ub_947623XEAPL2526 conf_lx_96756 conf_ub_96756 conf_lx_96756REF1 conf_ub_96756REF1 conf_lx_96756REF1_SG conf_ub_96756REF1_SG conf_lx_96756RF_DVT conf_ub_96756RF_DVT conf_lx_96756RFDVT_FAKE conf_ub_96756RFDVT_FAKE conf_lx_96756SV conf_ub_96756SV conf_lx_96757REF1T conf_ub_96757REF1T conf_lx_96757REF2T conf_ub_96757REF2T conf_lx_96757SV conf_ub_96757SV conf_lx_BM68 conf_ub_BM68 conf_lx_BR63 conf_ub_BR63 conf_lx_EBA63 conf_ub_EBA63 conf_lx_ET8_V2 conf_ub_ET8_V2 conf_lx_ET8_V2_GPY211 conf_ub_ET8_V2_GPY211 conf_lx_ET8PRO conf_ub_ET8PRO conf_lx_ET8PRO_GPY211 conf_ub_ET8PRO_GPY211 conf_lx_RP_AX58 conf_ub_RP_AX58 conf_lx_AX55 conf_ub_AX55 conf_lx_RT_AX3000N conf_ub_RT_AX3000N conf_lx_RT_AX58U_V2 conf_ub_RT_AX58U_V2 conf_lx_RT_AXE7800 conf_ub_RT_AXE7800 conf_lx_TUF_AX3000_V2 conf_ub_TUF_AX3000_V2 conf_lx_XC5 conf_ub_XC5 conf_lx_XD4PRO conf_ub_XD4PRO conf_lx_XD4PROIPA conf_ub_XD4PROIPA conf_lx_XD4PROIPA_DDR3 conf_ub_XD4PROIPA_DDR3 conf_lx_XT8_V2 conf_ub_XT8_V2 conf_lx_XT8_V2_50991 conf_ub_XT8_V2_50991 conf_lx_XT8PRO conf_ub_XT8PRO conf_lx_XT8PRO_GPY211 conf_ub_XT8PRO_GPY211 
+  atf: ATF sha256=cfdf35e9cf369ca1
+  uboot: U-Boot sha256=71a2f09eb7e3f157
+  fdt_uboot: dtb sha256=4a5f70559564fa55
+  kernel: 4.19 kernel sha256=4c3b6e45f8c744f4
+  fdt_947623EAP6L: dtb sha256=02240dfbfa2229b3
+  fdt_947623EAP6LL: dtb sha256=03f8d15f39e65a2b
+  fdt_947623EAPL2526: dtb sha256=3f064c48eef8428f
+  fdt_947623XEAPL2526: dtb sha256=5ea7d412a012ad2d
+  fdt_96756: dtb sha256=f0db2a2ea189c7b6
+  fdt_96756REF1: dtb sha256=320bc9416df78de4
+  fdt_96756REF1_SG: dtb sha256=f6ac9e830f7b8fb6
+  fdt_96756RF_DVT: dtb sha256=333c53db5b012c43
+  fdt_96756RFDVT_FAKE: dtb sha256=10afed58ee07757e
+  fdt_96756SV: dtb sha256=e1f6475a018b50cb
+  fdt_96757REF1T: dtb sha256=efb5165ea3fabdd8
+  fdt_96757REF2T: dtb sha256=5f76e42c23b5383e
+  fdt_96757SV: dtb sha256=91c32b0c365a0fd5
+  fdt_BM68: dtb sha256=db86ebcfdc2e63e8
+  fdt_BR63: dtb sha256=044d7c2c21aa8f07
+  fdt_EBA63: dtb sha256=71608b0dfe423d0c
+  fdt_ET8_V2: dtb sha256=6f7e085c32327fe8
+  fdt_ET8_V2_GPY211: dtb sha256=a84d147912bdcb31
+  fdt_ET8PRO: dtb sha256=1eb1f6792ab9de5c
+  fdt_ET8PRO_GPY211: dtb sha256=b1fc065cd867fb1a
+  fdt_RP_AX58: dtb sha256=d8c74a1b339ca6d2
+  fdt_RT-AX55: dtb sha256=e1f6475a018b50cb
+  fdt_RT_AX3000N: dtb sha256=45667eb546800094
+  fdt_RT_AX58U_V2: dtb sha256=f87b7f004f147cc5
+  fdt_RT_AXE7800: dtb sha256=b8fba56a66f3526b
+  fdt_TUF_AX3000_V2: dtb sha256=53e0a1f464c05944
+  fdt_XC5: dtb sha256=64c9a5d0f5f5429c
+  fdt_XD4PRO: dtb sha256=310a9e4cb43c8f49
+  fdt_XD4PROIPA: dtb sha256=f2932b6815e6d41b
+  fdt_XD4PROIPA_DDR3: dtb sha256=bbb7ed3797a1e5d2
+  fdt_XT8_V2: dtb sha256=adca78f9a4fe3613
+  fdt_XT8_V2_50991: dtb sha256=3c84b0ebf9ef4df1
+  fdt_XT8PRO: dtb sha256=86d476bca81fec0b
+  fdt_XT8PRO_GPY211: dtb sha256=3063f61bdfa85918
+--- default config:
+conf_uboot
+conf_uboot

@@ -1,0 +1,36 @@
+[
+ {
+  "file": "js/Chart.js",
+  "messages": [
+   "81:341 Empty block statement."
+  ]
+ },
+ {
+  "file": "js/https_redirect/https_redirect.js",
+  "messages": [
+   "160:11 Empty block statement."
+  ]
+ },
+ {
+  "file": "state.js",
+  "messages": [
+   "1215:9 Empty block statement."
+  ]
+ },
+ {
+  "file": "tmmenu.js",
+  "messages": [
+   "921:12 Empty block statement.",
+   "1179:12 Empty block statement.",
+   "1185:12 Empty block statement.",
+   "1236:12 Empty block statement."
+  ]
+ },
+ {
+  "file": "validator.js",
+  "messages": [
+   "97:48 Empty block statement.",
+   "98:37 Empty block statement."
+  ]
+ }
+]

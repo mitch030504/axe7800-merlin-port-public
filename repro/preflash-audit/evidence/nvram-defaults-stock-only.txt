@@ -1,0 +1,93 @@
+ahs_bhc_log                        REF       set       /jffs/bhc_chg.log
+ahs_bhc_log_1                      REF       set       /jffs/bhc_chg.log.1
+dblog_adj_syslog                   REF       set       0
+dblog_duration                     REF       set       0
+dblog_enable                       REF       set       0
+dblog_log_path                     REF       set       
+dblog_msqid_to_d                   REF       set       0
+dblog_remaining                    REF       set       0
+dblog_service                      REF       set       0
+dblog_state                        REF       set       0
+dblog_tousb                        REF       set       0
+dblog_transid                      REF       set       0123456789ABCDEF
+dblog_usb_path                     REF       set       
+dhcp1_dns1_x                                 set       
+dhcp1_enable_x                               set       0
+dhcp1_end                                    set       192.168.2.254
+dhcp1_gateway_x                              set       
+dhcp1_lease                                  set       86400
+dhcp1_start                                  set       192.168.2.2
+dhcp1_static_x                               set       0
+dhcp1_staticlist                   REF       set       
+dhcp1_wins_x                                 set       
+enable_cloudcheck                            set       0
+env_path                                     set       
+fb_attach_cfgfile                  REF       set       
+fb_attach_modemlog                 REF       set       
+fb_attach_syslog                   REF       set       
+fb_attach_wlanlog                  REF       set       
+fb_browserInfo                     REF       set       
+fb_comment                         REF       set       
+fb_contact_type                    REF       set       
+fb_country                         REF       set       
+fb_email                           REF       set       
+fb_email_dbg                       REF       set       
+fb_email_provider                  REF       set       
+fb_feedbackcount                   REF       set       0
+fb_gen_tarball                     REF       set       
+fb_pdesc                           REF       set       
+fb_phone                           REF       set       
+fb_ptype                           REF       set       
+fb_req_cnt                         REF       set       0
+fb_serviceno                       REF       set       
+fb_split_files                     REF       set       1
+fb_state                           REF       set       
+fb_tech_account                    REF       set       
+fb_total_size                      REF       set       0
+fb_transid                         REF       set       123456789ABCDEF0
+fb_unstable_conn                   REF       set       
+fb_when_occur                      REF       set       
+fb_which_band                      REF       set       
+httpd_die_reboot                             set       
+nordvpn_token                      REF       set       
+rstats_colors                                set       
+rstats_sshut                                 set       1
+telnetd_enable                     REF       set       0
+tpvpn_conntype                     REF       set       
+tpvpn_provider                     REF       set       
+tpvpn_region                                 set       
+vpn_client_cipher                            set       default
+vpn_client_crypt                             set       tls
+vpn_client_firewall                          set       auto
+vpn_client_poll                              set       0
+vpn_client_retry                             set       30
+vpn_client_tlscrypt                          set       0
+vpn_client_tp                                set       
+vpn_client_tp_proto                          set       
+vpn_client_tp_region                         set       
+vpn_debug                                    set       0
+vpn_server_cipher                            set       AES-128-CBC
+vpn_server_comp                              set       yes
+vpn_server_crypt                             set       tls
+vpn_server_firewall                          set       auto
+vpn_server_ncp_enable                        set       1
+vpn_server_plan                              set       1
+vpn_server_poll                              set       0
+vpn_server_reneg                             set       -1
+vpn_server_rgw                               set       0
+vpn_serverx_dns                    REF       set       
+vpn_serverx_eas                    REF       set       1, 
+vpnc_default_wan                   REF       set       0
+vpnc_default_wan_tmp                         set       
+vpnc_dev_policy_list               REF       set       
+vpnc_dev_policy_list_tmp           REF       set       
+vpnc_max_conn                      REF       set       2
+vpnc_policy_unit                             set       
+vpnc_unit                          REF       set       
+webs_update_beta                   REF       set       0
+webs_update_enable                 REF       set       0
+webs_update_time                   REF       set       02:00
+webs_update_trigger                REF       set       
+webs_update_ts                     REF       set       
+wgc_tp                                       set       
+wgc_tp_region                                set       

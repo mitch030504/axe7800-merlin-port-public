@@ -1,0 +1,6 @@
+######## s
+modules: 128
+kernel release in System.map/ver: present
+######## m
+modules: 150
+kernel release in System.map/ver: present
