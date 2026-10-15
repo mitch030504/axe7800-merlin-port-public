@@ -10,7 +10,7 @@
 > - This repository documents **research and reproducibility. It is not a firmware release.**
 > - No router flash, NVRAM, MTD, bootloader or partition operation is part of this workflow.
 
-**Public v3 — deterministic clean replay established; waiting for a matching 388_25xxx source package.**
+**Public v4 — matching ASUS GPL 388.25206 received; stock and Merlin RT-AXE7800 images build. Still not flash-ready.**
 
 A reproducibility lab for porting Asuswrt-Merlin to the **ASUS RT-AXE7800**
 (Broadcom **BCM6756**, profile **96756GW**, 32-bit ARM).
@@ -18,6 +18,39 @@ A reproducibility lab for porting Asuswrt-Merlin to the **ASUS RT-AXE7800**
 Merlin baseline: **`asuswrt-merlin.ng`, branch `3006.102-wifi6`, commit
 `ccd139a31d94de15d2da744083dbafbcfe97dcdf`**. That pinned lineage is *our* reproducibility
 baseline; it is **not** claimed to be the source tree ASUS used for any retail firmware.
+
+## Public v4 — GPL 388.25206 (current)
+
+ASUS supplied `GPL_RT-AXE7800_3.0.0.4.388.25206-gcaa73b5.tgz` through its open-source request
+channel. Its tree identifies itself as `EXTENDNO=25206-gcaa73b5`, the shipping firmware.
+
+| | status | where |
+|---|---|---|
+| package intake | identity established; all three generation gaps **PASS** via authentic same-model prebuilts (`spwenc.o` → `invalid_*`, `priv_webapi.o` → 34/34 libwebapi contract, `s46comm.o`) | [`repro/intake/INTAKE-388_25206.md`](repro/intake/INTAKE-388_25206.md) |
+| stock build | unmodified package builds a complete image; `rc`, `httpd`, `libwebapi.so`, `libnvram.so` are **byte-identical to retail 388_25206** | [`repro/stock-build-25206`](repro/stock-build-25206/README.md) |
+| Merlin baseline | measured: `3004.388` matches the 25206 ABI (2 vs 15 type mismatches) | [`repro/baseline-analysis`](repro/baseline-analysis/BASELINE-DECISION.md) |
+| Merlin port | **complete image** `RT-AXE7800_3004_388.13_alpha1_nand_squashfs.pkgtb`, independent builds on two hosts agree, runtime ABI closure identical to stock | [`repro/clean-replay-v12`](repro/clean-replay-v12/README.md) |
+
+The port uses only same-model ASUS inputs: 1,098 GPL files staged by a committed sha256
+manifest, plus eight small patches. Each patch either removes a call that ASUS's own 25206 source
+does not make (functions Merlin picked up from later GPLs), aligns a Merlin header with the
+supplied objects' ABI, fixes a Merlin build bug, or brings in ASUS 25206 hardware fixes that
+Merlin's platform sources lack (MXIC NAND workarounds in U-Boot, UBI and the flash driver). No
+stubs, no donor binaries.
+
+A [pre-flash audit](repro/preflash-audit/README.md) checked the image against stock offline: bootloader untouched, accepted by the stock upload check, same DTB, modules and blobs, and the radio firmware corrected to the stock-build copy. It also lists what must be checked on the device first. Its [coverage matrix](repro/preflash-audit/COVERAGE.md) crosses every stage of the flash and boot with every property class. Each cell is marked verified, not verifiable offline (with the reason), or not applicable.
+
+**Not established:** behaviour on hardware. Nothing has been flashed, and nothing here says it
+is safe to flash. The warning above still applies in full.
+
+Build environment: [`tools/build-env/Dockerfile`](tools/build-env/Dockerfile). The package's ARM
+toolchain lacks `cc1`/`cc1plus`/`lto1`/`libgcc.a`; RMerlin's `am-toolchains` copy is
+byte-identical on every shared file and supplies them (see the stock-build notes).
+
+---
+
+The sections below describe the **v3 state before the package arrived**. They are superseded
+and kept for the record.
 
 ## Current state model
 
@@ -161,7 +194,11 @@ mean guessing at private validation semantics, which this project does not do.
 
 ## Layout
 
-    repro/clean-replay-v11/   deterministic replay mechanism, patch series, provenance
+    repro/clean-replay-v12/   CURRENT: Merlin 3004.388 + GPL 25206 replay, manifest, patches, evidence
+    repro/stock-build-25206/  unmodified ASUS package build and retail comparison
+    repro/baseline-analysis/  measured Merlin baseline choice
+    repro/clean-replay-v11/   v3 replay on 3006.102 + GPL 388.34458 (superseded)
+    tools/build-env/          build container
     repro/clean-replay-v2/    earlier milestone (historical)
     repro/intake/             acceptance matrix, provenance checklist, audits
     tools/                    read-only package verification and inspection
