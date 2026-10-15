@@ -1,0 +1,24 @@
+diff --git a/release/src-rt/Makefile b/release/src-rt/Makefile
+index d27835b1dd..3b6fbe65d7 100755
+--- a/release/src-rt/Makefile
++++ b/release/src-rt/Makefile
+@@ -1952,6 +1952,10 @@ define RouterOptions
+                 sed -i "/RTCONFIG_ASD_2_1/d" $(1); \
+                 echo "RTCONFIG_ASD_2_1=y" >>$(1); \
+         fi;
++	if [ "$(ASD21)" = "n" ]; then \
++		sed -i "/RTCONFIG_ASD_2_1/d" $(1); \
++		echo "# RTCONFIG_ASD_2_1 is not set" >>$(1); \
++	fi;
+ 	if [ "$(MXL371X)" = "y" ]; then \
+ 		sed -i "/RTCONFIG_MXL371X/d" $(1); \
+ 		echo "RTCONFIG_MXL371X=y" >>$(1); \
+--- a/release/src-rt/target.mak	2026-10-14 15:25:29.921588502 +0200
++++ b/release/src-rt/target.mak	2026-10-14 15:25:29.925517946 +0200
+@@ -334,4 +334,5 @@
+ 		FRS_LIVE_UPDATE=n HAS_5G_2=y WIFI6E=y ASUSCTRL=y BCN_RPT=y BTM_11V=y INFO_EXAP=y AVBLCHAN=y FRONTHAUL_DWB=n \
+ 		SW_CTRL_ALLLED=y ASD=y AHS=n INTERNETCTRL=y GAME_MODE=y AMAS_ETHDETECT=y INSTANT_GUARD=y OWE_TRANS=y HSPOT=n \
+ 		ACL96=y GOOGLE_ASST=y COMFW=y WIREGUARD=y AMAS_DWB_RULE=y GEARUPPLUGIN=y SECURE_BY_DEFAULT=y IG_SITE2SITE=n \
+-		DNSPRIVACY=y IPSET=y NANO=y NFS=y NTPD=y SNMPD=y TOR=y UPNPIGD2=y
++		DNSPRIVACY=y IPSET=y NANO=y NFS=y NTPD=y SNMPD=y TOR=y UPNPIGD2=y \
++		ASD21=n

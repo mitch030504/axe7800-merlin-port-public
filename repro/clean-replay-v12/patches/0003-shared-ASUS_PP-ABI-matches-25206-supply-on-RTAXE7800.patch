@@ -1,0 +1,48 @@
+diff --git a/release/src/router/shared/shared.h b/release/src/router/shared/shared.h
+index c4036e7c74..3d7dfbeaca 100644
+--- a/release/src/router/shared/shared.h
++++ b/release/src/router/shared/shared.h
+@@ -4973,6 +4973,26 @@ enum{
+ 	ASUS_NV_PP_MAX
+ };
+ 
++#if defined(RTAXE7800)
++/* ABI of the GPL 388.25206 supply: its prebuilt spwenc.o defines ASUS_PP_t[] (12-byte
++ * entries) and its priv_webapi.o / web_hook.o take these 0-based ids. The 1-based layout
++ * below arrived with GPL 388_25633 and does not match the supplied objects. */
++enum{
++	ASUS_PP_AUTOUPGRADE,
++	ASUS_PP_ASD,
++	ASUS_PP_AHS,
++	ASUS_PP_ACCOUNT_BINDING,
++	ASUS_PP_CONFIG_TRANSFER,
++	ASUS_PP_DDNS,
++	ASUS_PP_MAX,
++};
++
++struct ASUS_PP_table {
++	char *name;
++	char *version;
++	int id;
++};
++#else
+ enum{
+ 	ASUS_PP_AUTOUPGRADE = 1,
+ 	ASUS_PP_ASD = 2,
+@@ -4991,13 +5011,16 @@ struct ASUS_PP_table {
+ 	int id;
+ 	int force_sign;
+ };
++#endif
+ extern struct ASUS_PP_table ASUS_PP_t[];
+ 
+ extern int webapi_get_b(const int id, char *buf, size_t len);
+ extern int get_ASUS_privacy_policy_state(const int id);
+ extern int get_ASUS_privacy_policy(void);
+ extern int get_ASUS_privacy_policy_ver(const int id);
++#if !defined(RTAXE7800)
+ extern void init_asus_pp_eula(void);
++#endif
+ extern char *rfctime(const time_t *timep, char *ts_string, int len);
+ extern void update_ntp_ts(time_t bf_time, int ntp_diff_ts);
+ extern int validate_rc_service(const char *value);

@@ -1,0 +1,71 @@
+diff --git a/release/src/router/rc/init.c b/release/src/router/rc/init.c
+index b1b043bba3..4d8ba030bc 100644
+--- a/release/src/router/rc/init.c
++++ b/release/src/router/rc/init.c
+@@ -19251,7 +19251,9 @@ int init_nvram2(void)
+ 	}
+ 
+ 	detect_vul_scan();
++#if !defined(RTAXE7800)	/* GPL 388.25206 rc/init.c does not call it; its spwenc.o does not define it (added in 388_25633) */
+ 	init_asus_pp_eula();
++#endif
+ 
+ 	return 0;
+ }  // end of init_nvram2
+diff --git a/release/src/router/rc/rc.c b/release/src/router/rc/rc.c
+index 69e46e925e..a66f065c68 100644
+--- a/release/src/router/rc/rc.c
++++ b/release/src/router/rc/rc.c
+@@ -2377,7 +2377,7 @@ static const applets_t applets[] = {
+ #if defined(RTCONFIG_FRS_LIVE_UPDATE)
+ 	{ "firmware_check_update",	firmware_check_update_main	},
+ #endif
+-#ifdef RTCONFIG_CFGSYNC
++#if defined(RTCONFIG_CFGSYNC) && !defined(RTAXE7800)	/* 25206 frs_service.o has no firmware_webs_update_main */
+ 	{ "firmware_webs_update",	firmware_webs_update_main	},
+ #endif
+ #ifdef RTCONFIG_FRS_FEEDBACK
+diff --git a/release/src/router/rc/watchdog.c b/release/src/router/rc/watchdog.c
+index 40dbea4d44..fff1f9c93c 100644
+--- a/release/src/router/rc/watchdog.c
++++ b/release/src/router/rc/watchdog.c
+@@ -204,7 +204,9 @@ static int lsof_period = 0;
+ static int lsof = 0;
+ static int mem_chk_period = 0;
+ static int mem_chk = 0;
+-#if defined(TUFAX3000_V2) || defined(RTAXE7800)
++/* RT-AXE7800 is built on the GPL 388.25206 supply, whose rc/watchdog.c has no
++ * check_eth1_pause and which provides no set_eth1_pause (added in GPL 388_25523). */
++#if defined(TUFAX3000_V2)
+ static int eth1_period = 60;
+ static int eth1 = 59;
+ static int eth1_count = 0;
+@@ -2517,7 +2519,7 @@ void rtkl_check()
+ }
+ #endif
+ 
+-#if defined(TUFAX3000_V2) || defined(RTAXE7800)
++#if defined(TUFAX3000_V2)	/* not RTAXE7800: see note at eth1_period */
+ void check_eth1_pause()
+ {
+ 	if (eth1_period) {
+@@ -10001,7 +10003,7 @@ void watchdog(int sig)
+ 	rtkl_check();
+ #endif
+ 
+-#if defined(TUFAX3000_V2) || defined(RTAXE7800)
++#if defined(TUFAX3000_V2)	/* not RTAXE7800: see note at eth1_period */
+ 	check_eth1_pause();
+ #endif
+ 
+@@ -10209,8 +10211,10 @@ void watchdog(int sig)
+ 	mem_chk_period = nvram_get_int("mem_chk_period");
+ 	if (mem_chk_period) {
+ 		mem_chk = (mem_chk + 1) % mem_chk_period ;
++#if !defined(RTAXE7800)	/* memleakdbg (GPL 388_25523) is not in the 25206 supply */
+ 		if (!mem_chk)
+ 			memleakdbg();
++#endif
+ 	}
+ 
+ #if !defined(RTCONFIG_BCM_MFG) && (defined(RTAX82U) || defined(GSAX3000) || defined(GSAX5400) || defined(TUFAX5400) || defined(GTAX11000_PRO) || defined(GTAXE16000) || defined(GTBE98) || defined(GTBE98_PRO) || defined(GTAX6000) || defined(GT10) || defined(RTAX82U_V2) || defined(TUFAX5400_V2) || defined(DSL_AX82U))

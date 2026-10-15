@@ -1,0 +1,211 @@
+diff --color -ruN a/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/main/components/apps/utils/WlGetDriverCfg.sh b/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/main/components/apps/utils/WlGetDriverCfg.sh
+--- a/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/main/components/apps/utils/WlGetDriverCfg.sh	2026-10-14 18:26:42.195996985 +0200
++++ b/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/main/components/apps/utils/WlGetDriverCfg.sh	2026-10-14 18:26:42.198997030 +0200
+@@ -124,6 +124,7 @@
+ echo -n ampdu_ba_wsize=; echo $(wl -i $ifname ampdu_ba_wsize)
+ echo -n bcn_rotate=; echo $(wl -i $ifname bcn_rotate)
+ echo -n bss=; echo $(wl -i $ifname bss)
++echo -n isup=; echo $(wl -i $ifname isup)
+ echo -n bss_maxassoc=; echo $(wl -i $ifname bss_maxassoc)
+ echo -n btc_mode=; echo $(wl -i $ifname btc_mode)
+ echo -n cap=; echo $(wl -i $ifname cap)
+diff --color -ruN a/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/main/components/opensource/router_tools/hostapd/src/utils/eloop.c b/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/main/components/opensource/router_tools/hostapd/src/utils/eloop.c
+--- a/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/main/components/opensource/router_tools/hostapd/src/utils/eloop.c	2026-10-14 18:26:42.165996540 +0200
++++ b/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/main/components/opensource/router_tools/hostapd/src/utils/eloop.c	2026-10-14 18:26:42.170396929 +0200
+@@ -986,6 +986,15 @@
+ 	}
+ }
+ 
++static void eloop_unblock_signal(int sig)
++{
++	sigset_t set;
++
++	sigemptyset(&set);
++	sigaddset(&set, sig);
++	sigprocmask(SIG_UNBLOCK, &set, NULL);
++}
++
+ int eloop_register_signal(int sig, eloop_signal_handler handler,
+ 			  void *user_data)
+ {
+@@ -1002,6 +1011,7 @@
+ 	tmp[eloop.signal_count].signaled = 0;
+ 	eloop.signal_count++;
+ 	eloop.signals = tmp;
++	eloop_unblock_signal(sig);
+ 	signal(sig, eloop_handle_signal);
+ 
+ 	return 0;
+diff --color -ruN a/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/main/components/opensource/router_tools/wpa_supplicant/src/utils/eloop.c b/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/main/components/opensource/router_tools/wpa_supplicant/src/utils/eloop.c
+--- a/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/main/components/opensource/router_tools/wpa_supplicant/src/utils/eloop.c	2026-10-14 18:26:42.180996763 +0200
++++ b/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/main/components/opensource/router_tools/wpa_supplicant/src/utils/eloop.c	2026-10-14 18:26:42.185248874 +0200
+@@ -986,6 +986,15 @@
+ 	}
+ }
+ 
++static void eloop_unblock_signal(int sig)
++{
++	sigset_t set;
++
++	sigemptyset(&set);
++	sigaddset(&set, sig);
++	sigprocmask(SIG_UNBLOCK, &set, NULL);
++}
++
+ int eloop_register_signal(int sig, eloop_signal_handler handler,
+ 			  void *user_data)
+ {
+@@ -1002,6 +1011,7 @@
+ 	tmp[eloop.signal_count].signaled = 0;
+ 	eloop.signal_count++;
+ 	eloop.signals = tmp;
++	eloop_unblock_signal(sig);
+ 	signal(sig, eloop_handle_signal);
+ 
+ 	return 0;
+diff --color -ruN a/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/main/src/shared/siutils.c b/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/main/src/shared/siutils.c
+--- a/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/main/src/shared/siutils.c	2026-10-14 18:26:42.130996021 +0200
++++ b/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/main/src/shared/siutils.c	2026-10-14 18:26:42.135061783 +0200
+@@ -9103,6 +9103,8 @@
+ 	W_REG(osh, ((volatile uint32*) ((volatile uint8*)regs+OFFSET_OTP_CTRL)),
+ 		regval+OTP_PWR_DIS);
+ 	(void)R_REG(osh, ((volatile uint32*)((volatile uint8*)regs+OFFSET_OTP_CTRL)));
++	/* delay before clearing to avoid any board/xtal glitch */
++	OSL_DELAY(100);
+ 	W_REG(osh, ((volatile uint32*) ((volatile uint8*)regs+OFFSET_OTP_CTRL)), regval);
+ 	(void)R_REG(osh, ((volatile uint32*)((volatile uint8*)regs+OFFSET_OTP_CTRL)));
+ 
+diff --color -ruN a/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/sys/src/shared/siutils.c b/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/sys/src/shared/siutils.c
+--- a/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/sys/src/shared/siutils.c	2026-10-14 18:26:42.148996288 +0200
++++ b/release/src-rt-5.04axhnd.675x/bcmdrivers/broadcom/net/wl/impl87/sys/src/shared/siutils.c	2026-10-14 18:26:42.154113329 +0200
+@@ -9103,6 +9103,8 @@
+ 	W_REG(osh, ((volatile uint32*) ((volatile uint8*)regs+OFFSET_OTP_CTRL)),
+ 		regval+OTP_PWR_DIS);
+ 	(void)R_REG(osh, ((volatile uint32*)((volatile uint8*)regs+OFFSET_OTP_CTRL)));
++	/* delay before clearing to avoid any board/xtal glitch */
++	OSL_DELAY(100);
+ 	W_REG(osh, ((volatile uint32*) ((volatile uint8*)regs+OFFSET_OTP_CTRL)), regval);
+ 	(void)R_REG(osh, ((volatile uint32*)((volatile uint8*)regs+OFFSET_OTP_CTRL)));
+ 
+diff --color -ruN a/release/src-rt-5.04axhnd.675x/bcmdrivers/opensource/char/board/bcm963xx/impl1/bcm63xx_flash.c b/release/src-rt-5.04axhnd.675x/bcmdrivers/opensource/char/board/bcm963xx/impl1/bcm63xx_flash.c
+--- a/release/src-rt-5.04axhnd.675x/bcmdrivers/opensource/char/board/bcm963xx/impl1/bcm63xx_flash.c	2026-10-14 18:26:42.112995753 +0200
++++ b/release/src-rt-5.04axhnd.675x/bcmdrivers/opensource/char/board/bcm963xx/impl1/bcm63xx_flash.c	2026-10-14 18:26:42.116895211 +0200
+@@ -1518,6 +1518,11 @@
+     return (sts);
+ }
+ 
++#define WAR_NAND_WRITE_BLK       1        /* This WAR is for MXIC parallel NAND, for ex. MX30LFxG28AD */
++#if defined(WAR_NAND_WRITE_BLK)
++#define WRITE_OOB_RETRY_COUNT    3
++#endif
++
+ /* Write data with or without JFFS2 clean marker, must pass function an aligned block address */
+ static int nandWriteBlk(struct mtd_info *mtd, int blk_addr, int data_len, char *data_ptr, bool write_JFFS2_clean_marker)
+ {
+@@ -1529,6 +1534,9 @@
+     struct mtd_oob_ops ops;
+     int sts = 0;
+     int page_addr, byte;
++#if defined(WAR_NAND_WRITE_BLK)
++    int retry;
++#endif
+ 
+     for (page_addr = 0; page_addr < data_len; page_addr += mtd->writesize)
+     {
+@@ -1555,6 +1563,20 @@
+ 
+         if (ops.len || ops.ooblen)
+         {
++#if defined(WAR_NAND_WRITE_BLK)
++            retry = WRITE_OOB_RETRY_COUNT;
++            while (retry--)
++            {
++                if( (sts = mtd_write_oob(mtd, blk_addr + page_addr, &ops)) == 0 )
++                    break;
++                else
++                {
++                    printk("nandWriteBlk - Block 0x%8.8x. Error writing page. retry count %d\n",
++                            blk_addr + page_addr, WRITE_OOB_RETRY_COUNT - retry);
++                    /* Just skip this page, don't erase this block and markbad */
++                }
++            }
++#else
+             if( (sts = mtd_write_oob(mtd, blk_addr + page_addr, &ops)) != 0 )
+             {
+                 printk("nandWriteBlk - Block 0x%8.8x. Error writing page.\n", blk_addr + page_addr);
+@@ -1562,6 +1584,7 @@
+                 mtd_block_markbad(mtd, blk_addr);
+                 break;
+             }
++#endif
+         }
+     }
+ 
+diff --color -ruN a/release/src-rt-5.04axhnd.675x/kernel/linux-4.19/drivers/mtd/ubi/wl.c b/release/src-rt-5.04axhnd.675x/kernel/linux-4.19/drivers/mtd/ubi/wl.c
+--- a/release/src-rt-5.04axhnd.675x/kernel/linux-4.19/drivers/mtd/ubi/wl.c	2026-10-14 18:26:42.095995501 +0200
++++ b/release/src-rt-5.04axhnd.675x/kernel/linux-4.19/drivers/mtd/ubi/wl.c	2026-10-14 18:26:42.099715248 +0200
+@@ -1051,6 +1051,10 @@
+  * needed. Returns zero in case of success and a negative error code in case of
+  * failure.
+  */
++#define WAR_UBI_SYNC_ERASE          1	/* This WAR is for MXIC parallel NAND, for ex. MX30LFxG28AD */
++#if defined(WAR_UBI_SYNC_ERASE)
++#define UBI_SYNC_ERASE_RETRY_COUNT  3
++#endif
+ static int __erase_worker(struct ubi_device *ubi, struct ubi_work *wl_wrk)
+ {
+ 	struct ubi_wl_entry *e = wl_wrk->e;
+@@ -1058,10 +1062,45 @@
+ 	int vol_id = wl_wrk->vol_id;
+ 	int lnum = wl_wrk->lnum;
+ 	int err, available_consumed = 0;
++#if defined(WAR_UBI_SYNC_ERASE)
++	int retry;
++#endif
+ 
+ 	dbg_wl("erase PEB %d EC %d LEB %d:%d",
+ 	       pnum, e->ec, wl_wrk->vol_id, wl_wrk->lnum);
+ 
++#if defined(WAR_UBI_SYNC_ERASE)
++	retry = UBI_SYNC_ERASE_RETRY_COUNT;
++	while (retry--)	{
++		err = sync_erase(ubi, e, wl_wrk->torture);
++		if (!err) {
++			spin_lock(&ubi->wl_lock);
++
++			if (!ubi->fm_anchor && e->pnum < UBI_FM_MAX_START) {
++				ubi->fm_anchor = e;
++				ubi->fm_do_produce_anchor = 0;
++			} else {
++				wl_tree_add(e, &ubi->free);
++				ubi->free_count++;
++			}
++
++			spin_unlock(&ubi->wl_lock);
++
++			/*
++			 * One more erase operation has happened, take care about
++			 * protected physical eraseblocks.
++			 */
++			serve_prot_queue(ubi);
++
++			/* And take care about wear-leveling */
++			err = ensure_wear_leveling(ubi, 1);
++			return err;
++		} else {
++			ubi_err(ubi, "WAR: failed to erase PEB %d, retry count %d",
++				pnum, UBI_SYNC_ERASE_RETRY_COUNT - retry);
++		}
++	}
++#else
+ 	err = sync_erase(ubi, e, wl_wrk->torture);
+ 	if (!err) {
+ 		spin_lock(&ubi->wl_lock);
+@@ -1086,6 +1125,7 @@
+ 		err = ensure_wear_leveling(ubi, 1);
+ 		return err;
+ 	}
++#endif /* WAR_UBI_SYNC_ERASE */
+ 
+ 	ubi_err(ubi, "failed to erase PEB %d, error %d", pnum, err);
+ 

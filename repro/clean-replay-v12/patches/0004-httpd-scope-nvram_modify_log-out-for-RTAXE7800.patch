@@ -1,0 +1,44 @@
+diff --git a/release/src/router/httpd/web.c b/release/src/router/httpd/web.c
+index a30f29467d..edf4a2185f 100644
+--- a/release/src/router/httpd/web.c
++++ b/release/src/router/httpd/web.c
+@@ -3662,7 +3662,9 @@ int validate_instance(webs_t wp, char *name, json_object *root, json_object *act
+ 					continue;
+ 
+ 				/* log wlx nvram */
++#if !defined(RTAXE7800)	/* nvram activity log: added in GPL 388_25633, provided by its web_hook.o; not in the 25206 supply or source */
+ 				nvram_modify_log(tmp, nvram_safe_get(tmp), value, activity_obj);
++#endif
+ 
+ 				nvram_check_and_set_for_prefix(name, tmp, value);
+ #if defined(RTCONFIG_NOTIFICATION_CENTER)
+@@ -4159,7 +4161,9 @@ int validate_apply(webs_t wp, json_object *root)
+ 						continue;
+ 
+ 					/* log wl with unit */
++#if !defined(RTAXE7800)	/* nvram activity log: added in GPL 388_25633, provided by its web_hook.o; not in the 25206 supply or source */
+ 					nvram_modify_log(tmp, nvram_safe_get(tmp), value, activity_obj);
++#endif
+ 
+ 					nvram_set(tmp, value);
+ #if defined(RTCONFIG_NOTIFICATION_CENTER)
+@@ -4562,7 +4566,9 @@ int validate_apply(webs_t wp, json_object *root)
+ 				}
+ 
+ 				/* log no prefix nvram */
++#if !defined(RTAXE7800)	/* nvram activity log: added in GPL 388_25633, provided by its web_hook.o; not in the 25206 supply or source */
+ 				nvram_modify_log(name, nvram_safe_get(name), value, activity_obj);
++#endif
+ #ifdef RTCONFIG_CFGSYNC
+ 				save_changed_param(cfg_root, name);
+ #endif                           
+@@ -4815,7 +4821,9 @@ int validate_apply(webs_t wp, json_object *root)
+ 		httpd_nvram_commit();
+ 	}
+ 
++#if !defined(RTAXE7800)	/* nvram activity log: added in GPL 388_25633, provided by its web_hook.o; not in the 25206 supply or source */
+ 	handle_nvram_modify_log(activity_obj);
++#endif
+ 
+ 	if(activity_obj)
+ 		json_object_put(activity_obj);

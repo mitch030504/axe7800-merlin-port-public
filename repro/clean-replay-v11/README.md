@@ -1,3 +1,7 @@
+> **SUPERSEDED by [`clean-replay-v12`](../clean-replay-v12/README.md).** After ASUS supplied GPL 388.25206,
+> the port moved to Merlin `3004.388` with a same-generation supply and now builds a complete image.
+> v11 is kept for the record; its frontier (`invalid_*`, `priv_webapi`, `s46comm`) is closed by the 25206 package.
+
 # clean-replay-v11 — fully deterministic RT-AXE7800 integration replay
 
 One script, one pass, zero manual steps: pinned RMerlin `ccd139a31d` → complete legitimate
